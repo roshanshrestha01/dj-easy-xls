@@ -2,6 +2,11 @@
 
 Helpful class and methods to import and export xls with django framework.
 
+## Installation
+```
+pip install dj-easy-xls
+```
+
 ## Usage
 
 ### Import from xls
@@ -9,6 +14,8 @@ Helpful class and methods to import and export xls with django framework.
 We call method get_sheet_rows which converts the table into dict with column as keys.
 
 ``` py
+from dj_easy_xls import OpenpyxlImport
+
 excel = OpenpyxlImport(file)
 rows = excel.get_sheet_rows()
 if excel.tally_header(rows[0], self.fields):
@@ -22,6 +29,8 @@ if excel.tally_header(rows[0], self.fields):
 Simple example to export django model queryset into csv file.
 
 ```py
+from dj_easy_xls import OpenpyxlExport, change_format
+
 file_name = self.file_name + ' ' + datetime.datetime.today().strftime('%Y-%m-%d') or 'Untitled'
 export = OpenpyxlExport(file_name)
 export.generate(self.fields, True)
