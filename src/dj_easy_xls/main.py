@@ -70,7 +70,7 @@ class OpenpyxlExport(object):
     def set_width(self):
         for column_cells in self.ws.columns:
             length = max(len(self.as_text(cell.value)) for cell in column_cells)
-            self.ws.column_dimensions[column_cells[0].column].width = length + 2
+            self.ws.column_dimensions[column_cells[0].column_letter].width = length + 2
 
     def to_camelcase(self, string):
         text = re.sub(r'(?!^)_([a-zA-Z])', lambda m: ' ' + m.group(1).upper(), str(string))
@@ -94,15 +94,6 @@ class OpenpyxlExport(object):
         response['Content-Disposition'] = 'attachment; filename=' + file_name
         return response
         
-## Export Useage
-# file_name = self.file_name + ' ' + datetime.datetime.today().strftime('%Y-%m-%d') or 'Untitled'
-# export = OpenpyxlExport(file_name)
-# export.generate(self.fields, True)
-# for object in self.queryset:
-#     values = [change_format(object, val) for val in self.fields]
-#     export.generate(values)
-# export.set_width()
-
 
 class OpenpyxlImport(object):
     def __init__(self, file):
@@ -153,38 +144,3 @@ class OpenpyxlImport(object):
     def get_sheet_rows(self):
         return tuple(self.get_first_sheet().iter_rows())
         
-        
-## Import Useage
-# excel = OpenpyxlImport(file)
-# rows = excel.get_sheet_rows()
-# if excel.tally_header(rows[0], self.fields):
-#     for row in rows[1:]:
-#         params = excel.row_to_dict(row)
-#         if 'citizenship_no' in params and params.get('citizenship_no'):
-#             if 'district' in params and params.get('district'):
-#                 district, created = District.objects.get_or_create(name=params.pop('district'))
-#                 params['district'] = district
-#             unique_keys = {
-#                 'id': params.pop('id'),
-#                 'citizenship_no': params.pop('citizenship_no'),
-#             }
-#             instance, created = Customer.objects.get_or_create(citizenship_no=unique_keys.get('citizenship_no'))
-#             save_model(instance, params)
-            
-            
-            
-# const config = {
-#       baseURL: import.meta.env.VITE_API_URL,
-#       responseType: 'blob', // Very important!
-#     }
-#     try {
-#       const response = await Http.get(URL, config)
-#       const url = window.URL.createObjectURL(new Blob([response.data]));
-#       const link = document.createElement('a');
-#       link.href = url;
-#       link.setAttribute('download', 'file.xlsx'); //or any other extension
-#       document.body.appendChild(link);
-#       link.click();
-#     } catch (error) {
-#       console.log(error)
-#     }
