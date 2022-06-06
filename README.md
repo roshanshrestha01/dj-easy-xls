@@ -28,7 +28,7 @@ export.generate(self.fields, True)
 for object in self.queryset:
     values = [change_format(object, val) for val in self.fields]
     export.generate(values)
-# export.set_width() # sets proper width of each columns
+export.set_width() # sets proper width of each columns
 ```
 
 #### Return xlsx file as a response
@@ -44,7 +44,7 @@ return export.response()
 Saving xlsx in a directory path.
 
 ```py
-return export.wb.save(<path-to-file>)
+return export.wb.save("<path>/test.xlsx")
 ```
 
 ### Saving response from django as a file with axios
