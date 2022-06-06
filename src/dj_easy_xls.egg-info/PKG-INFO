@@ -1,0 +1,18 @@
+Metadata-Version: 2.1
+Name: dj-easy-xls
+Version: 0.0.1
+Summary: Easy package with helpful method to use openpyxl
+Home-page: https://github.com/roshanshrestha01/dj-easy-xls
+Author: Roshan Shrestha
+Author-email: roshanshrestha01@gmail.com
+Project-URL: Bug Tracker, https://github.com/roshanshrestha01/dj-easy-xls/issues
+Classifier: Programming Language :: Python :: 3
+Classifier: License :: OSI Approved :: MIT License
+Classifier: Operating System :: OS Independent
+Requires-Python: >=3.6
+Description-Content-Type: text/markdown
+License-File: LICENSE
+
+# Dj easy xls
+
+Helpful class and methods to import and export xls with django framework.
