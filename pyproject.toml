@@ -1,8 +1,5 @@
 [build-system]
 requires = [
   "setuptools>=42",
-  "Django>=3.2.12",
-  "openpyxl>=3.0.10",
-  "xlrd"
 ]
 build-backend = "setuptools.build_meta"

@@ -95,13 +95,13 @@ class OpenpyxlExport(object):
         return response
         
 ## Export Useage
-file_name = self.file_name + ' ' + datetime.datetime.today().strftime('%Y-%m-%d') or 'Untitled'
-export = OpenpyxlExport(file_name)
-export.generate(self.fields, True)
-for object in self.queryset:
-    values = [change_format(object, val) for val in self.fields]
-    export.generate(values)
-export.set_width()
+# file_name = self.file_name + ' ' + datetime.datetime.today().strftime('%Y-%m-%d') or 'Untitled'
+# export = OpenpyxlExport(file_name)
+# export.generate(self.fields, True)
+# for object in self.queryset:
+#     values = [change_format(object, val) for val in self.fields]
+#     export.generate(values)
+# export.set_width()
 
 
 class OpenpyxlImport(object):
@@ -155,21 +155,21 @@ class OpenpyxlImport(object):
         
         
 ## Import Useage
-excel = OpenpyxlImport(file)
-rows = excel.get_sheet_rows()
-if excel.tally_header(rows[0], self.fields):
-    for row in rows[1:]:
-        params = excel.row_to_dict(row)
-        if 'citizenship_no' in params and params.get('citizenship_no'):
-            if 'district' in params and params.get('district'):
-                district, created = District.objects.get_or_create(name=params.pop('district'))
-                params['district'] = district
-            unique_keys = {
-                'id': params.pop('id'),
-                'citizenship_no': params.pop('citizenship_no'),
-            }
-            instance, created = Customer.objects.get_or_create(citizenship_no=unique_keys.get('citizenship_no'))
-            save_model(instance, params)
+# excel = OpenpyxlImport(file)
+# rows = excel.get_sheet_rows()
+# if excel.tally_header(rows[0], self.fields):
+#     for row in rows[1:]:
+#         params = excel.row_to_dict(row)
+#         if 'citizenship_no' in params and params.get('citizenship_no'):
+#             if 'district' in params and params.get('district'):
+#                 district, created = District.objects.get_or_create(name=params.pop('district'))
+#                 params['district'] = district
+#             unique_keys = {
+#                 'id': params.pop('id'),
+#                 'citizenship_no': params.pop('citizenship_no'),
+#             }
+#             instance, created = Customer.objects.get_or_create(citizenship_no=unique_keys.get('citizenship_no'))
+#             save_model(instance, params)
             
             
             
