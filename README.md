@@ -67,3 +67,9 @@ try {
   console.log(error);
 }
 ```
+
+
+### Install from Pypi test
+``` bash
+pip install -i https://test.pypi.org/simple/ dj-easy-xls
+```
